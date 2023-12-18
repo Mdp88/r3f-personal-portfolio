@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Montserrat:wght@100&family=Roboto:ital,wght@0,400;1,100;1,300&display=swap");
 #root {
   width: 100vw;
   height: 100vh;
@@ -5,4 +6,83 @@
 
 body {
   margin: 0;
+  font-family: "Montserrat", sans-serif;
+  color: #e0ffff;
+}
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+  overflow: scroll;
+}
+.canvasContainer {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+}
+.content {
+  top: 0;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+
+@keyframes wave {
+  0% {
+    translate: -7px;
+    rotate: -30deg;
+  }
+  50% {
+    translate: 7px -2px;
+    rotate: 30deg;
+  }
+  100% {
+    translate: -7px;
+    rotate: -30deg;
+  }
+}
+#wave {
+  font-size: 50px;
+  margin-left: -5px;
+  margin-right: 5px;
+  display: inline-block;
+  animation: wave 0.6s infinite;
+  transform: translate(5px);
+  font-style: none;
+  color: royalblue;
+}
+section {
+  padding-left: 5%;
+  padding-rigth: 5%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  scroll-snap-align: start;
+}
+.section-content {
+  padding: 20px;
+  transition: all 0.2s ease-in-out;
+  backdrop-filter: brightness(80%);
+}
+.hello {
+  width: 50%;
+}
+.experience {
+  width: 100%;
+}
+h1 {
+  font-size: 50px;
+}
+h2 {
+  font-size: 30px;
+}
+#name {
+  font-size: 30px;
+  font-family: "Caveat", cursive;
+  font-style: bold;
+  /* color: #f5f5dc; */
+}
+h3 {
+  font-size: 25px;
 }
