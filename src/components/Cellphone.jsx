@@ -18,7 +18,6 @@ export function Cell(props) {
 
   return (
     <group dispose={null} scale={[0.048, 0.048, 0.048]}>
-      <pointLight intensity={0.5} color={"aqua"} position-z={2} ref={light} />
       <group
         position-y={2.3}
         position-z={0.4}

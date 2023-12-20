@@ -19,11 +19,12 @@ import { debounce } from "lodash";
 import * as THREE from "three";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 
-export const Experience = ({ position, section, setSection }) => {
+export const Experience = ({ position, section, setSection, onRender }) => {
   const { camera, intersect } = useThree();
   const group = useRef();
   const sky = useRef();
   const wire = useRef();
+  const [width, setWidth] = useState(window.innerWidth);
 
   const colorMap = useTexture("assets/seamlessNight.jpg");
   colorMap.wrapS = colorMap.wrapT = THREE.RepeatWrapping;
@@ -34,25 +35,27 @@ export const Experience = ({ position, section, setSection }) => {
   const [follow, setFollow] = useState(true);
 
   useEffect(() => {
+    onRender();
     camera.position.y = 2;
     camera.position.z = 2.3;
     camera.lookAt(0, 1.3, 2);
+    window.addEventListener("resize", () => setWidth(window.innerWidth));
+    return () => {
+      removeEventListener("resize");
+    };
   }, []);
 
   useEffect(() => {
-    if (position <= 16.5) {
+    if (position <= 25) {
       debouncedSection(0);
-    } else if (position > 16.5 && position <= 50) {
+    } else if (position > 25 && position <= 75) {
       debouncedSection(1);
-    } else if (position > 50 && position <= 83.5) {
-      debouncedSection(2);
     } else {
-      debouncedSection(3);
+      debouncedSection(2);
     }
   }, [position]);
 
   useEffect(() => {
-    console.log(section);
     switch (section) {
       case 0:
         setAnimation("Idle");
@@ -67,15 +70,15 @@ export const Experience = ({ position, section, setSection }) => {
         });
         gsap.to(group.current.rotation, {
           y: MathUtils.degToRad(0),
-          duration: 3,
+          duration: 1,
           onComplete: () => {
             setFollow(true);
           },
         });
         gsap.to(group.current.position, {
           y: 0,
-          x: 0.7,
-          duration: 3,
+          x: width >= 900 ? 0.7 : 0,
+          duration: 1,
         });
 
         break;
@@ -83,8 +86,8 @@ export const Experience = ({ position, section, setSection }) => {
         setAnimation("Typing");
         setFollow(false);
         gsap.to(camera.position, {
-          z: 1,
-          x: 2,
+          z: width >= 900 ? 2 : 3,
+          x: width >= 900 ? 3 : 4,
           y: 1.3,
           duration: 1,
           onUpdate: () => {
@@ -93,45 +96,25 @@ export const Experience = ({ position, section, setSection }) => {
         });
         gsap.to(group.current.rotation, {
           y: MathUtils.degToRad(0),
-          duration: 3,
+          duration: 1,
         });
         gsap.to(group.current.position, {
           y: 0.3,
           x: 1,
-          duration: 3,
-        });
-
-        break;
-      case 2:
-        setAnimation("Typing");
-        setFollow(false);
-
-        gsap.to(camera.position, {
-          z: 6,
-          x: 0,
-          duration: 3,
-          onUpdate: () => {
-            camera.lookAt(0, 1.3, 0);
-          },
-        });
-        gsap.to(group.current.rotation, {
-          y: MathUtils.degToRad(0),
           duration: 1,
         });
-        gsap.to(group.current.position, {
-          y: 0.3,
-          x: 0,
-          duration: 3,
-        });
 
         break;
-      case 3:
+
+      case 2:
         setAnimation("Talking");
         setFollow(false);
 
         gsap.to(camera.position, {
-          z: 1.5,
-          duration: 3,
+          z: 2.3,
+          x: 0,
+          y: 2,
+          duration: 1,
           onUpdate: () => {
             camera.lookAt(0, 1.3, 0);
           },
@@ -139,9 +122,6 @@ export const Experience = ({ position, section, setSection }) => {
         gsap.to(group.current.rotation, {
           y: MathUtils.degToRad(0),
           duration: 1,
-          onComplete: () => {
-            setFollow(true);
-          },
         });
         gsap.to(group.current.position, {
           y: 0,
@@ -151,21 +131,21 @@ export const Experience = ({ position, section, setSection }) => {
 
         break;
 
-      default:
-        setAnimation("Idle");
-        setFollow(false);
+      // default:
+      //   setAnimation("Idle");
+      //   setFollow(false);
 
-        gsap.to(camera.position, {
-          y: 2,
-          z: 2.3,
-          duration: 3,
-          onUpdate: () => {
-            camera.lookAt(0, 1.3, 0);
-          },
-        });
-        break;
+      //   gsap.to(camera.position, {
+      //     y: 2,
+      //     z: 2.3,
+      //     duration: 3,
+      //     onUpdate: () => {
+      //       camera.lookAt(0, 1.3, 0);
+      //     },
+      //   });
+      //   break;
     }
-  }, [section]);
+  }, [section, width]);
 
   const debouncedSection = useCallback((value) => changeSection(value), []);
 
