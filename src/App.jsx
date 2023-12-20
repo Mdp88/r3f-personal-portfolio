@@ -3,7 +3,7 @@ import { Experience } from "./components/Experience";
 import "./index.css";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { FiGithub } from "react-icons/fi";
-import { FaLinkedin } from "react-icons/fa6";
+import { FaLinkedin, FaWhatsapp } from "react-icons/fa6";
 import { IoMdDownload } from "react-icons/io";
 import { FaChevronDown } from "react-icons/fa6";
 import emailjs from "@emailjs/browser";
@@ -92,12 +92,22 @@ function App() {
       </div>
       <div className="icons-container">
         <a
+          href="https://wa.me/5491134842303"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div className="icon">
+            <FaWhatsapp size={20} />
+          </div>
+          <div className="tooltip">WhatsApp</div>
+        </a>
+        <a
           href="https://github.com/Mdp88/r3f-personal-portfolio"
           target="_blank"
           rel="noopener noreferrer"
         >
           <div className="icon">
-            <FiGithub size={20} className="" />
+            <FiGithub size={20} />
           </div>
           <div className="tooltip">GitHub</div>
         </a>
@@ -198,11 +208,17 @@ function App() {
         <section ref={contact}>
           <div className="section-content contact">
             <div className="contact-text">
-              <p>
+              <h1>Let's Talk!</h1>
+              <h2>
+                Fill out the form or check out the links in the top-right corner
+                of the screen
+              </h2>
+              <h3>
                 Ready to elevate your digital presence? Let's connect and
-                discuss how we can bring your ideas to life. Feel free to reach
-                out, your next project is just a call away.
-              </p>
+                discuss how we can bring your ideas to life.
+                <br /> Feel free to reach out, your next project is just a call
+                away.
+              </h3>
             </div>
             <div className="contact-form">
               <form ref={form} onSubmit={sendEmail}>
