@@ -160,11 +160,17 @@ section {
   flex-direction: column;
   & textarea {
     all: unset;
+    border-radius: 5px;
+
     resize: none;
     flex-grow: 1;
     min-height: 40px;
     background-color: rgba(155, 155, 155, 0.2);
     padding: 10px;
+    border: 2px solid transparent;
+    &:focus {
+      border: 2px solid rgba(224, 255, 255, 0.5);
+    }
   }
   & input {
     all: unset;
@@ -175,6 +181,11 @@ section {
     height: 40px;
     flex-shrink: 0;
     padding: 0px 10px 0px 10px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    &:focus {
+      border: 2px solid rgba(224, 255, 255, 0.5);
+    }
   }
   & input[type="submit"] {
     margin-top: 20px;
