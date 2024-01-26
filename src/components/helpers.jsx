@@ -11,19 +11,27 @@ import { SiMongodb } from "react-icons/si";
 
 export const projects = [
   {
+    title: "3D Mini Golf",
+    description:
+      "Full-stack 3D game created using Three.js and the MERN stack for persisting high-scores data. Rapier Engine was utilized for physics simulation.",
+    src: "assets/minigolf.png",
+    link: "https://3d-minigolf.netlify.app/",
+    tech: [
+      "Three JS",
+      "React",
+      "CSS",
+      "JavaScript",
+      "HTML",
+      "Node JS",
+      "Mongo DB",
+    ],
+  },
+  {
     title: "Weather App",
     description:
       "Weather App, created with React + Leaflet (Open Source Maps) + WeatherApi.com API.",
     src: "assets/weatherApp.jpeg",
     link: "https://weathermapmdp.netlify.app/",
-    tech: ["React", "CSS", "JavaScript", "HTML"],
-  },
-  {
-    title: "Matchin Gun",
-    description:
-      "Fake Dating App, using React + the Randomuser API. Allows the user to filter the matches by gender and age range.",
-    src: "assets/matchingun.jpeg",
-    link: "https://matchingun.netlify.app/",
     tech: ["React", "CSS", "JavaScript", "HTML"],
   },
   {
@@ -42,11 +50,12 @@ export const projects = [
     tech: ["CSS", "JavaScript", "HTML"],
   },
   {
-    title: "R3F concept test",
-    description: "Website for testing some Three JS functionalities.",
-    src: "assets/r3f.jpeg",
-    link: "https://react-three-fiber-mdp.netlify.app/",
-    tech: ["Three JS", "React", "CSS", "JavaScript", "HTML"],
+    title: "Matchin Gun",
+    description:
+      "Fake Dating App, using React + the Randomuser API. Allows the user to filter the matches by gender and age range.",
+    src: "assets/matchingun.jpeg",
+    link: "https://matchingun.netlify.app/",
+    tech: ["React", "CSS", "JavaScript", "HTML"],
   },
   {
     title: "Tic-tac-toe",
@@ -55,21 +64,5 @@ export const projects = [
     src: "assets/tateti.png",
     link: "https://tateti-mdp.netlify.app/",
     tech: [, "CSS", "JavaScript", "HTML", "Bootstrap"],
-  },
-  {
-    title: "3D Mini Golf",
-    description:
-      "Fullstack 3D Game made with ThreeJS and MERN stack to persist high-scores data.",
-    src: null,
-    link: null,
-    tech: [
-      "Three JS",
-      "React",
-      "CSS",
-      "JavaScript",
-      "HTML",
-      "Node JS",
-      "Mongo DB",
-    ],
   },
 ];
